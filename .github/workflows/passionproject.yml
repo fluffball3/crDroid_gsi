@@ -43,6 +43,8 @@ jobs:
 
     - name: Install repo
       run: |
+        mkdir crdroid
+        cd crdroid
         mkdir ~/bin
         curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
         chmod a+x ~/bin/repo
@@ -50,8 +52,6 @@ jobs:
       
     - name: Initialize repo
       run: |
-        mkdir crdroid
-        cd crdroid
            repo init -u https://github.com/crdroidandroid/android.git -b 14.0
            git clone https://github.com/naz664/treble_manifest.git .repo/local_manifests  -b 14
       id: pwd
