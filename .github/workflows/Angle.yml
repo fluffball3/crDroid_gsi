@@ -42,6 +42,7 @@ jobs:
            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
            echo "$GITHUB_WORKSPACE/depot_tools" >> $GITHUB_PATH
            export PATH=~/depot_tools:$PATH
+           sudo apt install ninja-build
 
       
     - name: Angle 1
