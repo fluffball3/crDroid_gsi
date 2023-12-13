@@ -51,7 +51,7 @@ jobs:
            cd angle
            fetch angle
            ./build/install-build-deps.sh
-           gn gen out/Android --args="target_os = "android" target_cpu = "arm64" angle_enable_vulkan = true is_component_build = false is_official_build = true is_debug = false"
+           gn gen out/Android --args="target_os = "android" target_cpu = "arm64" angle_enable_vulkan = true is_component_build = false is_debug = false"
       
     
     - name: Angle main
