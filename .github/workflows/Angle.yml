@@ -33,45 +33,28 @@ jobs:
     # Cleanup The Actions Workspace Using Custom Composite Run Actions
     - name: Cleanup
       uses: rokibhasansagar/slimhub_actions@main
-      # That's it! Now use your normal steps
+      # That's it! Now use your normal steps'
 
-    - name: Install OpenJDK
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'zulu'
-        java-version: '8'
-
-    - name: Install repo
+    - name: Install dependencies
       run: |
-        mkdir crdroid
-        cd crdroid
-        sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git git-lfs gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-gtk3-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
-        mkdir ~/bin
-        curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-        chmod a+x ~/bin/repo
-        sudo ln -sf ~/bin/repo /usr/bin/repo
+           sudo apt-get update
+           sudo apt-get install python3
+           git clone https://chromium.googlesource.com/
+           export PATH=/path/to/depot_tools:$PATH
+
       
-    - name: Initialize repo
+    - name: Angle 1
       run: |
-           repo init -u https://github.com/crdroidandroid/android.git -b 14.0
-           git clone https://github.com/naz664/treble_manifest.git .repo/local_manifests  -b 14
-           rm -rf .repo/local_manifests/gapps.xml
+           mkdir angle
+           cd angle
+           fetch angle
+           ./build/install-build-deps.sh
+           gn args out/Android
       id: pwd
       
     
-    - name: Repo Sync
+    - name: Angle main
       run: |
-        repo sync --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
-        bash patches/apply-patches.sh .
+        autoninja -C out/Android angle_apks
 
 
-    - name: Building OS
-      run: |
-           cd device/phh/treble
-           bash generate.sh crDroid
-           . build/envsetup.sh
-           ccache -M 50G -F 0
-           lunch treble_arm64_bvN-userdebug
-           make systemimage -j$(nproc --all)
-                cd out/target/product/tdgsi_arm64_ab
-                xz -z -k system.img
