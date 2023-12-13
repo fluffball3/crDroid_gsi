@@ -51,7 +51,9 @@ jobs:
            cd angle
            fetch angle
            ./build/install-build-deps.sh
-           gn args out/Android 'target_os = "android" /n target_cpu = "arm64" /n angle_enable_vulkan = true /n is_component_build = false /n is_official_build = true /n is_debug = false'
+           mkdir /out
+           mkdir /out/Android
+           echo target_os = "android" /n target_cpu = "arm64" /n angle_enable_vulkan = true /n is_component_build = false /n is_official_build = true /n is_debug = false > /out/Android/args.gn
 
       
     
