@@ -51,13 +51,8 @@ jobs:
            cd angle
            fetch angle
            ./build/install-build-deps.sh
-           mkdir out
-           mkdir out/Android
-           cd out/Android
-           wget https://raw.githubusercontent.com/fluffball3/crDroid_gsi/13/args.gn
-           cd ..
-           cd ..
-      id: pwd
+           gn args out/Android --gn-args 'target_os = "android" /n target_cpu = "arm64" /n angle_enable_vulkan = true /n is_component_build = false /n is_official_build = true /n is_debug = false'
+
       
     
     - name: Angle main
