@@ -1,0 +1,77 @@
+name: crDroid-14 Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      MANIFEST_URL:
+        description: 'MANIFEST_URL (if want to use SSH keys, use git@github.com:XXXXX)'
+        required: true
+        default: 'https://github.com/naz664/treble_manifest.git'
+      BUILD_TARGET:
+        description: 'BUILD_TARGET'
+        required: true
+        default: 'crDroid-OS'
+
+jobs:
+  build:
+    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:   
+    - name: Display Run Parameters
+      run: |
+        echo "::group::User Environment Variables"
+        echo "Manifest URL: ${{ github.event.inputs.MANIFEST_URL }}"
+        echo "Build Target: ${{ github.event.inputs.BUILD_TARGET }}.img"
+        echo "::endgroup::"
+
+
+    # You might want to Checkout your repo first, but not mandatory
+    - name: Check Out
+      uses: actions/checkout@v3
+    # Cleanup The Actions Workspace Using Custom Composite Run Actions
+    - name: Cleanup
+      uses: rokibhasansagar/slimhub_actions@main
+      # That's it! Now use your normal steps
+
+    - name: Install OpenJDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: '8'
+
+    - name: Install repo
+      run: |
+        mkdir crdroid
+        cd crdroid
+        sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git git-lfs gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-gtk3-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
+        mkdir ~/bin
+        curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+        chmod a+x ~/bin/repo
+        sudo ln -sf ~/bin/repo /usr/bin/repo
+      
+    - name: Initialize repo
+      run: |
+           repo init -u https://github.com/crdroidandroid/android.git -b 14.0
+           git clone https://github.com/naz664/treble_manifest.git .repo/local_manifests  -b 14
+           rm -rf .repo/local_manifests/gapps.xml
+      id: pwd
+      
+    
+    - name: Repo Sync
+      run: |
+        repo sync --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
+        bash patches/apply-patches.sh .
+
+
+    - name: Building OS
+      run: |
+           cd device/phh/treble
+           bash generate.sh crDroid
+           . build/envsetup.sh
+           ccache -M 50G -F 0
+           lunch treble_arm64_bvN-userdebug
+           make systemimage -j$(nproc --all)
+                cd out/target/product/tdgsi_arm64_ab
+                xz -z -k system.img
