@@ -55,7 +55,7 @@ jobs:
            sudo mkdir out/Android
            chmod a+x out/Android
            cd out/Android
-           wget https://raw.githubusercontent.com/fluffball3/crDroid_gsi/13/args.gn
+           wget https://raw.githubusercontent.com/fluffball3/crDroid_gsi/13/patches/args.gn
            cd ..
            cd ..
       
