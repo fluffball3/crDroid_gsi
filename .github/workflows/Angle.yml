@@ -55,6 +55,8 @@ jobs:
            sudo mkdir out/Android
            cd out/Android
            wget https://raw.githubusercontent.com/fluffball3/crDroid_gsi/13/patches/args.gn
+           cd ..
+           cd ..
       
     
     - name: Angle main
