@@ -53,7 +53,7 @@ jobs:
            ./build/install-build-deps.sh
            sudo mkdir out
            sudo mkdir out/Android
-           chmod a+x out/Android
+           sudo chmod a+x out/Android
            cd out/Android
            wget https://raw.githubusercontent.com/fluffball3/crDroid_gsi/13/patches/args.gn
            cd ..
