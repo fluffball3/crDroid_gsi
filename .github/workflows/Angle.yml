@@ -51,9 +51,9 @@ jobs:
            cd angle
            fetch angle
            ./build/install-build-deps.sh
-           sudo mkdir out
-           sudo mkdir out/Android
-           sudo chmod a+x out/Android
+           mkdir out
+           mkdir out/Android
+           sudo chmod a+x*
            cd out/Android
            wget https://raw.githubusercontent.com/fluffball3/crDroid_gsi/13/args.gn
            cd ..
