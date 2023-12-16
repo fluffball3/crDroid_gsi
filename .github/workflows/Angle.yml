@@ -49,15 +49,15 @@ jobs:
       run: |
            mkdir angle
            cd angle
-           fetch angle
-           ./build/install-build-deps.sh
            mkdir out
            mkdir out/Android
-           sudo chmod a+x*
            cd out/Android
            wget https://raw.githubusercontent.com/fluffball3/crDroid_gsi/13/args.gn
+           sudo chmod a+x args.gn
            cd ..
-           cd ..
+           cd ..           
+           fetch angle
+           ./build/install-build-deps.sh
       
     
     - name: Angle main
