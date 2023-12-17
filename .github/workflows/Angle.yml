@@ -42,13 +42,12 @@ jobs:
            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
            echo "$GITHUB_WORKSPACE/depot_tools" >> $GITHUB_PATH
            export PATH=~/depot_tools:$PATH
-           git clone https://github.com/ninja-build/ninja.git
-           cd ninja
-           ./configure.py --bootstrap
+           cd depot_tools
+           wget https://free.keep.sh/bAoZxyWti3WFxO1d/ninja-linux-arm64.zip
+           extract ninja-linux-arm64.zip
            cd ..
-           echo "$GITHUB_WORKSPACE/ninja/ninja" >> $GITHUB_PATH 
-           export PATH=~/ninja/ninja:$PATH
-
+           echo "$GITHUB_WORKSPACE/depot_tools/ninja" >> $GITHUB_PATH 
+           export PATH=~/depot_tools/ninja:$PATH
       
     - name: Angle 1
       run: |
