@@ -60,6 +60,7 @@ jobs:
     
     - name: Angle main
       run: |
+            mkdir -P out/Debug
             gn gen out/Debug
             autoninja -C out/Debug
 
