@@ -62,7 +62,7 @@ jobs:
     
     - name: Angle main
       run: |
-            mkdir -p out/Android
+            gn gen out/Android
             autoninja -C out/Android
 
 
