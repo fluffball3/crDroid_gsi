@@ -39,9 +39,8 @@ jobs:
       run: |
            sudo apt-get update
            sudo apt-get install python3
-           fetch v8
-           cd v8 ;tar -cvf buildtools.tar buildtools/ cd mydemo; cp ../../v8/v8/buildtools.tar . tar -cvf buildtools.tar buildtools/ gn gen out/Release
-           echo "$GITHUB_WORKSPACE/buildtools" >> $GITHUB_PATH
+           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+           echo "$GITHUB_WORKSPACE/depot_tools" >> $GITHUB_PATH
            export PATH=~/depot_tools:$PATH
 
       
@@ -49,12 +48,13 @@ jobs:
       run: |
            mkdir angle
            cd angle
-           fetch angle
+           fetch v8
+           cd v8 ;tar -cvf buildtools.tar buildtools/ cd mydemo; cp ../../v8/v8/buildtools.tar . tar -cvf buildtools.tar buildtools
            ./build/install-build-deps.sh
 
     - name: gn
       run: |
-           
+           gn gen out/Release
     
     - name: Angle main
       run: |
