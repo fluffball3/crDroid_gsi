@@ -57,12 +57,11 @@ jobs:
            wget https://raw.githubusercontent.com/fluffball3/crDroid_gsi/13/patches/args.gn
            cd ..
            cd ..
+           gn gen out/Android
       
     
     - name: Angle main
       run: |
-           mkdir out
-           mkdir out/Android
            autoninja -C out/Android
            autoninja -C out/Android angle_apks
 
