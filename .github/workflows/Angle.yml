@@ -65,6 +65,11 @@ jobs:
       run: |
             mkdir out
             mkdir out/Android
+            cd out/Android
+            wget https://raw.githubusercontent.com/fluffball3/crDroid_gsi/13/patches/args.gn
+            sudo chmod a+x args.gn
+            cd ..
+            cd ..
             autoninja -C out/Android angle_apks
 
 
