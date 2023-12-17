@@ -35,6 +35,7 @@ jobs:
       uses: rokibhasansagar/slimhub_actions@main
       # That's it! Now use your normal steps'
 
+      
     - name: Install dependencies
       run: |
            sudo apt-get update
@@ -42,7 +43,14 @@ jobs:
            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
            echo "$GITHUB_WORKSPACE/depot_tools" >> $GITHUB_PATH
            export PATH=~/depot_tools:$PATH
-           sudo apt install ninja-build
+           cd depot_tools
+           wget https://free.keep.sh/bAoZxyWti3WFxO1d/ninja-linux-arm64.zip/download
+           mv download ninja-linux-arm64.zip
+           extract ninja-linux-arm64.zip
+           cd ..
+           echo "$GITHUB_WORKSPACE/depot_tools/ninja" >> $GITHUB_PATH 
+           export PATH=~/depot_tools/ninja:$PATH
+           
       
     - name: Angle 1
       run: |
