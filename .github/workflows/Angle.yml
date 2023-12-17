@@ -53,7 +53,8 @@ jobs:
 
     - name: gn
       run: |
-           gn gen out/Release
+           fetch v8
+           cd v8 ;tar -cvf buildtools.tar buildtools/ cd mydemo; cp ../../v8/v8/buildtools.tar . tar -cvf buildtools.tar buildtools/ gn gen out/ Release
     
     - name: Angle main
       run: |
