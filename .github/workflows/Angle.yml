@@ -43,8 +43,10 @@ jobs:
            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
            echo "$GITHUB_WORKSPACE/depot_tools" >> $GITHUB_PATH
            export PATH=~/depot_tools:$PATH
-           mkdir ninja
+           git clone https://github.com/ninja-build/ninja.git
            cd ninja
+           ./configure.py --bootstrap
+           sudo rm -r ninja
            wget https://free.keep.sh/bAoZxyWti3WFxO1d/ninja-linux-arm64.zip/download
            mv download ninja-linux-arm64.zip
            sudo apt install p7zip
