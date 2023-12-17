@@ -50,10 +50,6 @@ jobs:
            cd angle
            fetch angle
            ./build/install-build-deps.sh
-
-    - name: gn
-      run: |
-           gn gen out/Android
     
     - name: Angle main
       run: |
