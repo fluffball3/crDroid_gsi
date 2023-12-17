@@ -47,8 +47,7 @@ jobs:
            wget https://free.keep.sh/bAoZxyWti3WFxO1d/ninja-linux-arm64.zip/download
            mv download ninja-linux-arm64.zip
            sudo apt install p7zip
-           7z x ninja-linux-arm64.zip
-           y
+           7z x ninja-linux-arm64.zip -y
            cd ..
            echo "$GITHUB_WORKSPACE/depot_tools/ninja" >> $GITHUB_PATH 
            export PATH=~/depot_tools/ninja:$PATH
