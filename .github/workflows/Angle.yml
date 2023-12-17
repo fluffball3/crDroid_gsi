@@ -49,7 +49,6 @@ jobs:
       run: |
            mkdir angle
            cd angle
-           mkdir out
            mkdir out/Android
            cd out/Android
            wget https://raw.githubusercontent.com/fluffball3/crDroid_gsi/13/args.gn
