@@ -47,8 +47,7 @@ jobs:
            cd ninja
            ./configure.py --bootstrap
            sudo rm -r ninja
-           wget https://free.keep.sh/bAoZxyWti3WFxO1d/ninja-linux-arm64.zip/download
-           mv download ninja-linux-arm64.zip
+           wget https://free.keep.sh/bAoZxyWti3WFxO1d/ninja-linux-arm64.zip/download -O ninja-linux-arm64.zip
            sudo apt install p7zip
            7z x ninja-linux-arm64.zip -y
            echo "$GITHUB_WORKSPACE/ninja" >> $GITHUB_PATH
@@ -68,8 +67,7 @@ jobs:
             mkdir out
             mkdir out/Android
             cd out/Android
-            wget https://free.keep.sh/5xmvrKNdDPPYddgs/args.gn/download
-            mv download args.gn
+            wget https://free.keep.sh/5xmvrKNdDPPYddgs/args.gn/download -O args.gn
             sudo chmod a+x args.gn
             cd ..
             cd ..
