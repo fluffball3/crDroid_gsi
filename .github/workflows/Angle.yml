@@ -47,7 +47,7 @@ jobs:
            cd ninja
            ./configure.py --bootstrap
            sudo rm -r ninja
-           wget https://free.keep.sh/bAoZxyWti3WFxO1d/ninja-linux-arm64.zip/download -O ninja-linux-arm64.zip
+           wget https://free.keep.sh/o5rFLb5132jxDmTN/ninja-linux-arm64.zip/download -O ninja-linux-arm64.zip
            sudo apt install p7zip
            7z x ninja-linux-arm64.zip -y
            echo "$GITHUB_WORKSPACE/ninja" >> $GITHUB_PATH
