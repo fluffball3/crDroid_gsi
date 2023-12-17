@@ -49,6 +49,8 @@ jobs:
            sudo apt install p7zip
            7z x ninja-linux-arm64.zip -y
            cd ..
+           echo "$GITHUB_WORKSPACE/depot_tools" >> $GITHUB_PATH
+           export PATH=~/depot_tools:$PATH
            
       
     - name: Angle 1
