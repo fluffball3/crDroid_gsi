@@ -51,18 +51,13 @@ jobs:
            cd angle
            fetch angle
            ./build/install-build-deps.sh
-           mkdir out
-           mkdir out/Android
-           cd out/Android
-           wget https://raw.githubusercontent.com/fluffball3/crDroid_gsi/13/patches/args.gn
-           cd ..
-           cd ..
-           gn gen out/Android
-      
+
+    - name: gn
+      run: |
+           gn gen out/Release --args="is_debug = false"
     
     - name: Angle main
       run: |
-           autoninja -C out/Android
-           autoninja -C out/Android angle_apks
+           autoninja -C out/Release
 
 
