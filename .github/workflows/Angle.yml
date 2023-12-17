@@ -53,7 +53,7 @@ jobs:
 
     - name: gn
       run: |
-           gn gen out/Release --args="is_debug = false"
+           gn gen out/Release
     
     - name: Angle main
       run: |
