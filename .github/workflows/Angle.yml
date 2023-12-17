@@ -62,6 +62,7 @@ jobs:
     
     - name: Angle main
       run: |
+           autoninja -C out/Android
            autoninja -C out/Android angle_apks
 
 
