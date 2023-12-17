@@ -42,11 +42,11 @@ jobs:
            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
            echo "$GITHUB_WORKSPACE/depot_tools" >> $GITHUB_PATH
            export PATH=~/depot_tools:$PATH
-           cd depot_tools
-           wget https://storage.googleapis.com/chrome-infra-packages/store/SHA256/bb4335862abfe32d7b24f1bc39bfefb0e108bb2b6250b3531905c171b98f2f1b?Expires=1702845236&GoogleAccessId=chrome-infra-packages%40appspot.gserviceaccount.com&Signature=i3GJwWdPQYzteaHZw3zEJbQ96TNcL4drm0AxMbpyQAEsWqIAmWkb7owLz69Qg72xQF73NW4chUTXh8%2BkoObj3JlmOK1nYGbOV44d%2FXSk8crbHql5QoX%2FMLI6gEuM%2BU2HkgfGBfXhHX40Iex2FtmmGiig41vaWkSGuRnTnimhC6%2BdcZWFhf5hCR8xBumoPzVc8unCBcPPXGPhdOrAacl7J5bqgIwHzuiGegEep9qcYK8eDWlq%2BvS4qGCtuc2Mba17OScuZqB2iVnWOcv3y7WWrS%2FAGkuVaVERXFTHtzBiUKkxYwQ3hYioKWesRu%2FZ6uN8O0i7oqTr6X6zyx5CVfCjJQ%3D%3D&response-content-disposition=attachment%3B+filename%3D%22ninja-linux-arm64.zip%22
-           extract ninja-linux-arm64.zip
+           git clone https://github.com/ninja-build/ninja.git
+           cd ninja
+           ./configure.py --bootstrap
            cd ..
-           echo "$GITHUB_WORKSPACE/depot_tools/ninja" >> $GITHUB_PATH 
+           echo "$GITHUB_WORKSPACE/n/ninja" >> $GITHUB_PATH 
            export PATH=~/depot_tools/ninja:$PATH
 
       
