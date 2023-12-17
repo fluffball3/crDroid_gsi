@@ -61,7 +61,6 @@ jobs:
     
     - name: Angle main
       run: |
-            gn gen out/Android
             autoninja -C out/Android
 
 
