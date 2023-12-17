@@ -57,6 +57,7 @@ jobs:
     
     - name: Angle main
       run: |
-           autoninja -C out/Android
+            mkdir -p out/Android
+            autoninja -C out/Android
 
 
