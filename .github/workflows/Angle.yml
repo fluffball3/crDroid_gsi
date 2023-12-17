@@ -48,16 +48,15 @@ jobs:
       run: |
            mkdir angle
            cd angle
-           fetch v8
-           cd v8 ;tar -cvf buildtools.tar buildtools/ cd mydemo; cp ../../v8/v8/buildtools.tar . tar -cvf buildtools.tar buildtools
+           fetch angle
            ./build/install-build-deps.sh
 
     - name: gn
       run: |
-           gn gen out/Release
+           gn gen out/Android
     
     - name: Angle main
       run: |
-           autoninja -C out/Release
+           autoninja -C out/Android
 
 
