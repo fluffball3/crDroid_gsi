@@ -44,7 +44,7 @@ jobs:
            echo "$GITHUB_WORKSPACE/depot_tools/ninja" >> $GITHUB_PATH
            export PATH=~/depot_tools:$PATH
            export PATH=~/depot_tools/ninja:$PATH
-           sudo apt-get ninja
+           sudo apt-get ninja-build
 
       
     - name: Angle 1
