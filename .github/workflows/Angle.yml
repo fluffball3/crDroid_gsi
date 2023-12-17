@@ -46,8 +46,8 @@ jobs:
            cd ninja
            ./configure.py --bootstrap
            cd ..
-           echo "$GITHUB_WORKSPACE/n/ninja" >> $GITHUB_PATH 
-           export PATH=~/depot_tools/ninja:$PATH
+           echo "$GITHUB_WORKSPACE/ninja/ninja" >> $GITHUB_PATH 
+           export PATH=~/ninja/ninja:$PATH
 
       
     - name: Angle 1
