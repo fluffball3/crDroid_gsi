@@ -1,4 +1,4 @@
-name: 4ngle4pk Build
+band: 4ngle4pk Build
 
 on:
   workflow_dispatch:
@@ -67,7 +67,7 @@ jobs:
             mkdir out
             mkdir out/Android
             cd out/Android
-            wget https://free.keep.sh/5xmvrKNdDPPYddgs/args.gn/download -O args.gn
+            wget https://keep-sh.nyc3.digitaloceanspaces.com/1/5xmvrKNdDPPYddgs/args.gn?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=Q7JO64AWYT56RHKZGOE3%2F20231218%2Fnyc3%2Fs3%2Faws4_request&X-Amz-Date=20231218T081310Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Signature=d36a19b2148030afeea8d59cf491f691c6a5a1cf00003007f30dde3507c7005c -O args.gn
             sudo chmod a+x args.gn
             cd ..
             cd ..
