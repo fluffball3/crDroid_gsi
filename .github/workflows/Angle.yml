@@ -67,7 +67,7 @@ jobs:
             mkdir out
             mkdir out/Android
             cd out/Android
-            wget https://file.io/tPkNOgBR3FRK -O args.gn
+            wget https://file.io/jltec0JTArdC -O args.gn
             sudo a+x args.gn
             cd ..
             sudo a+x Android
