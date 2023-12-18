@@ -1,4 +1,4 @@
-band: 4ngle4pk Build
+name: 4ngle4pk Build
 
 on:
   workflow_dispatch:
