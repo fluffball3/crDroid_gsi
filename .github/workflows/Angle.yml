@@ -69,7 +69,9 @@ jobs:
             cd out/Android
             wget https://file.io/5zQGvjTVkQM5 -O args.gn
             cd ..
+            sudo a+x Android
             cd ..
+            sudo a+x out
             autoninja -C out/Android angle_apks
 
 
