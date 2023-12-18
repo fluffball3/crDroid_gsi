@@ -67,7 +67,8 @@ jobs:
             mkdir out
             mkdir out/Android
             cd out/Android
-            wget https://keep-sh.nyc3.digitaloceanspaces.com/1/ncqcdu9xpw0sQtk2/args.gn?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=Q7JO64AWYT56RHKZGOE3%2F20231218%2Fnyc3%2Fs3%2Faws4_request&X-Amz-Date=20231218T091238Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Signature=9aeca15719fbc6d8a8b77c241e79ec1a20c9877a3f4d0a9ec11ac718fe377cb4            cd ..
+            wget https://file.io/5zQGvjTVkQM5 -O args.gn
+            cd ..
             cd ..
             autoninja -C out/Android angle_apks
 
