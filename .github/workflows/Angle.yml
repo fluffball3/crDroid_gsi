@@ -71,7 +71,6 @@ jobs:
             sudo chmod a+x args.gn
             cd ..
             cd ..
-            gn gen out/Android
             autoninja -C out/Android angle_apks
 
 
