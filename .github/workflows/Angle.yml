@@ -65,10 +65,6 @@ jobs:
             cd Android
             wget https://free.keep.sh/fFYRdVbo7K9NXeXL/args.gn/download -O args.gn
             ./configure.py --bootstrap
-            sudo rm -r ninja
-            wget https://free.keep.sh/gSTPoT4msM2sCFFL/ninja-linux-arm64.zip/download -O ninja-linux-arm64.zip
-            sudo apt install p7zip
-            7z x ninja-linux-arm64.zip -y
             sudo chmod a+x args.gn
             sudo chmod a+x ninja
             echo "$GITHUB_WORKSPACE/angle/out/Android" >> $GITHUB_PATH
