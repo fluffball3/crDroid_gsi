@@ -50,7 +50,6 @@ jobs:
            sudo apt install p7zip
            7z x ninja-linux-arm64.zip -y
            echo "$GITHUB_WORKSPACE/ninja" >> $GITHUB_PATH
-           export PATH=~/ninja:$PATH
            cd ..
            
       
