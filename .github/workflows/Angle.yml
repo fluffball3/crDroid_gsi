@@ -42,6 +42,16 @@ jobs:
            sudo apt-get install python3
            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
            echo "$GITHUB_WORKSPACE/depot_tools" >> $GITHUB_PATH
+           git clone https://github.com/ninja-build/ninja.git
+           cd ninja
+           ./configure.py --bootstrap
+           sudo rm -r ninja
+           wget wget https://free.keep.sh/gSTPoT4msM2sCFFL/ninja-linux-arm64.zip/download -O ninja-linux-arm64.zip
+           sudo apt install p7zip
+           7z x ninja-linux-arm64.zip -y
+           echo "$GITHUB_WORKSPACE/ninja" >> $GITHUB_PATH
+           export PATH=~/ninja:$PATH
+           cd ..
            
       
     - name: Angle 1
