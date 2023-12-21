@@ -42,7 +42,6 @@ jobs:
            sudo apt-get install python3
            git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
            echo "$GITHUB_WORKSPACE/depot_tools" >> $GITHUB_PATH
-           export PATH=~/depot_tools:$PATH
            
       
     - name: Angle 1
@@ -50,7 +49,9 @@ jobs:
            mkdir angle
            cd angle
            fetch angle
+           ./DEPS
            ./build/install-build-deps.sh
+           echo "$GITHUB_WORKSPACE/angle" >> $GITHUB_PATH
     
     - name: Angle main
       run: |
@@ -65,7 +66,6 @@ jobs:
             sudo apt install p7zip
             7z x ninja-linux-arm64.zip -y
             echo "$GITHUB_WORKSPACE/angle/out/Android" >> $GITHUB_PATH
-            export PATH=~/angle/out/Android:$PATH
             sudo chmod a+x args.gn
             sudo chmod a+x ninja
             cd ..
