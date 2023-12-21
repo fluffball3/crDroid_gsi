@@ -61,11 +61,12 @@ jobs:
       run: |
             mkdir out
             cd out
-            gn gen out/Android
+            ../../depot_tools/gn gen Android
             cd Android
             sudo rm -r args.gn
             wget https://free.keep.sh/fFYRdVbo7K9NXeXL/args.gn/download -O args.gn
             sudo chmod a+x args.gn
+            cd ..
             cd ..
             autoninja -C out/Android
             autoninja -C out/Android angle_apks
