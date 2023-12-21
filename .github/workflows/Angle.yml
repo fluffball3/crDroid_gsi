@@ -59,10 +59,7 @@ jobs:
            mkdir angle
            cd angle
            fetch angle
-           sudo chmod a+x DEPS
-           sudo ./DEPS
            ./build/install-build-deps.sh
-           echo "$GITHUB_WORKSPACE/angle" >> $GITHUB_PATH
     
     - name: Angle main
       run: |
