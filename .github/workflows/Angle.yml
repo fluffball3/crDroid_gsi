@@ -67,12 +67,12 @@ jobs:
             mkdir out
             mkdir out/Android
             cd out/Android
-            wget https://file.io/CqMqt6ZCD7Uq -O args.gn
-            sudo a+x args.gn
+            wget https://free.keep.sh/yVPIpCfR1WOyKfGf/args.gn/download -O args.gn
+            sudo chmod a+x args.gn
             cd ..
-            sudo a+x Android
+            sudo chmod a+x Android
             cd ..
-            sudo a+x out
+            sudo chmod a+x out
             autoninja -C out/Android angle_apks
 
 
